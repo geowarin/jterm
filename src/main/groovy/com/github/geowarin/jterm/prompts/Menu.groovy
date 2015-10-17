@@ -5,7 +5,7 @@ import com.github.geowarin.jterm.Keys
 
 import static org.fusesource.jansi.Ansi.Color.RED
 
-class Menu extends BasePrompt {
+class Menu implements Prompt {
     private String[] items
     int selected = 0
 
@@ -19,10 +19,10 @@ class Menu extends BasePrompt {
         int c;
         while ((c = JTerm.readCharacter()) != null) {
             if (c == Keys.DOWN) {
-                decSelected()
+                decrementSelected()
             }
             if (c == Keys.UP) {
-                incSelected()
+                incrementSelected()
             }
 
             if (c == Keys.ENTER) {
@@ -33,8 +33,7 @@ class Menu extends BasePrompt {
         }
     }
 
-
-    void display(clear = false) {
+    private void display(clear = false) {
         if (clear) {
             JTerm.clearLines(items.size())
         }
@@ -51,12 +50,12 @@ class Menu extends BasePrompt {
         items[selected]
     }
 
-    void incSelected() {
+    private void incrementSelected() {
         selected++
         selected = selected >= items.size() ? 0 : selected
     }
 
-    void decSelected() {
+    private void decrementSelected() {
         selected--
         selected = selected < 0 ? items.size() - 1 : selected
     }

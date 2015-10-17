@@ -11,13 +11,13 @@ import org.fusesource.jansi.Ansi.Color
 import static org.fusesource.jansi.Ansi.ansi
 
 class JTerm {
-    static String ClearLine = '\u001B[K'
-    static String ClearWholeLine = '\u001B[2K'
-    static String LineUp = '\u001B[1A'
+    private static String CLEAR_LINE = '\u001B[K'
+    private static String CLEAR_WHOLE_LINE = '\u001B[2K'
+    private static String LINE_UP = '\u001B[1A'
 
     static JTerm jTerm = new JTerm()
 
-    private Prompt currentPromp
+    private Prompt currentPrompt
     private ConsoleReader reader
 
     JTerm() {
@@ -29,8 +29,8 @@ class JTerm {
     }
 
     static void clearLines(int num = 1) {
-        jTerm.reader.print((ClearWholeLine + LineUp) * num)
-        jTerm.reader.print(ClearLine)
+        jTerm.reader.print((CLEAR_WHOLE_LINE + LINE_UP) * num)
+        jTerm.reader.print(CLEAR_LINE)
     }
 
     static String echo() {
@@ -86,17 +86,17 @@ class JTerm {
         jTerm.reader.flush()
     }
 
-    private static String renderPrompt(Prompt prompt) {
-        jTerm.currentPromp = prompt
-        jTerm.currentPromp.render()
-        jTerm.currentPromp.result
-    }
-
     static int readCharacter() {
         jTerm.reader.readCharacter()
     }
 
     static String readLine(String prompt = '', Character mask = null) {
         jTerm.reader.readLine(prompt, mask)
+    }
+
+    private static String renderPrompt(Prompt prompt) {
+        jTerm.currentPrompt = prompt
+        jTerm.currentPrompt.render()
+        jTerm.currentPrompt.result
     }
 }
