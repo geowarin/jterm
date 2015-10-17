@@ -1,8 +1,10 @@
 import com.github.geowarin.jterm.JTerm
-import org.fusesource.jansi.Ansi
+
+import static org.fusesource.jansi.Ansi.Color.MAGENTA
 
 //JTerm.echo()
 
-JTerm.print(Ansi.ansi().fg(Ansi.Color.BLUE).render('lol'))
+JTerm.print('Please select a meal:', MAGENTA)
+
 def result = JTerm.menu('pizza', 'bread', 'sausage')
 JTerm.print("You selected @|green $result|@")

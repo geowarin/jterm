@@ -1,9 +1,9 @@
 package com.github.geowarin.jterm.promps
 
+import com.github.geowarin.jterm.JTerm
 import com.github.geowarin.jterm.Keys
-import jline.console.ConsoleReader
 
-import static org.fusesource.jansi.Ansi.ansi
+import static org.fusesource.jansi.Ansi.Color.RED
 
 class Menu extends BasePrompt {
     private String[] items
@@ -13,11 +13,11 @@ class Menu extends BasePrompt {
         this.items = items
     }
 
-    void render(ConsoleReader reader) {
-        display(reader)
+    void render() {
+        display()
 
         int c;
-        while ((c = reader.readCharacter()) != null) {
+        while ((c = JTerm.readCharacter()) != null) {
             if (c == Keys.DOWN) {
                 decSelected()
             }
@@ -29,21 +29,22 @@ class Menu extends BasePrompt {
                 break;
             }
 
-            display(reader)
+            display(true)
         }
     }
 
 
-    void display(ConsoleReader reader) {
-        reader.clearScreen()
+    void display(clear = false) {
+        if (clear) {
+            JTerm.clearLines(items.size())
+        }
         items.eachWithIndex { String item, int index ->
             if (selected == index) {
-                reader.output << ansi().render("@|red -> $item|@\n")
+                JTerm.print("-> $item", RED)
             } else {
-                reader.output << '   ' + item + '\n'
+                JTerm.print("   $item")
             }
         }
-        reader.output.flush()
     }
 
     String getResult() {

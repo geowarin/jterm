@@ -4,7 +4,7 @@ import jline.console.ConsoleReader
 
 interface Prompt {
 
-    void render(ConsoleReader reader)
+    void render()
 
     String getResult()
 }

@@ -1,15 +1,14 @@
 package com.github.geowarin.jterm.promps
 
-import jline.console.ConsoleReader
+import com.github.geowarin.jterm.JTerm
 
 public class Echo extends BasePrompt {
 
     @Override
-    public void render(ConsoleReader reader) {
+    public void render() {
         int c;
         while ((c = reader.readCharacter()) != null) {
-            reader.output << c + '\n'
-            reader.output.flush()
+            JTerm.print(c)
         }
     }
 
