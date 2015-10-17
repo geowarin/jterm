@@ -62,7 +62,7 @@ class JTerm {
         flush()
     }
 
-    static print(String str = '') {
+    static print(String str) {
         print(ansi().render(str))
     }
 

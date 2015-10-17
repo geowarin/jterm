@@ -2,8 +2,6 @@ import com.github.geowarin.jterm.JTerm
 
 import static org.fusesource.jansi.Ansi.Color.MAGENTA
 
-//JTerm.echo()
-
 String firstName = JTerm.input('What is your first name')
 String lastName = JTerm.input('What is your last name', 'Doe')
 
