@@ -125,6 +125,16 @@ JTerm.println(Ansi.ansi().fg(YELLOW).render('Hello'))
 
 Same as above but without carriage return
 
+## Availability
+
+This package is hosted on https://bintray.com/bintray/jcenter[jcenter]
+
+It is therefore available directly from a groovy grape.
+
+You can also include the `jcenter()` repository in your gradle script.
+
+Or add a bunch of XML in your pom.xml.
+
 ## Compatibility
 
 Linux, MacOS, Windows
