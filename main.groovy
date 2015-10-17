@@ -1,5 +1,7 @@
+import com.github.geowarin.jterm.Ansi
 import com.github.geowarin.jterm.ConsoleWriter
 import com.github.geowarin.jterm.InputReader
+import com.github.geowarin.jterm.Keys
 
 class Main {
     InputReader inputReader = new InputReader()
@@ -10,7 +12,11 @@ class Main {
     void list(ConsoleWriter screen) {
         screen.clearAll()
         items.eachWithIndex { String item, int index ->
-            screen << (selected == index ? '-> ' : '   ') + item + '\n'
+            if (selected == index) {
+                screen << Ansi.Yellow.format('-> '+ item) + '\n'
+            } else {
+                screen << '   ' + item + '\n'
+            }
         }
         screen.display()
     }
@@ -33,15 +39,15 @@ class Main {
                         list(screen)
                     }
 
-                    if (c == 0x0A) {
+                    if (c == Keys.ENTER) {
                         println "You selected " + items[selected]
                         break;
                     }
                 }
             }
         }
-
     }
 }
+
 
 new Main().start()
