@@ -2,7 +2,9 @@
 
 A friendly java/groovy library to collect user inputs in commandline applications
 
-## Example
+## Usage
+
+### Groovy
 
 The following groovy script:
 
@@ -29,6 +31,37 @@ JTerm.println("You ordered @|green $result|@")
 Will produce this lovely output:
 
 image::example.png[example]
+
+### Java
+
+You can also use it in java:
+
+```java
+package test;
+
+import com.github.geowarin.jterm.JTerm;
+import com.github.geowarin.jterm.Validator;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        String firstName = JTerm.input("What is your first name");
+        String lastName = JTerm.input("What is your last name", "Doe");
+
+        Validator ageValidator = (input) -> input.matches("\\d+") ? null : "Please enter a number";
+        String age = JTerm.input("What is your age", ageValidator);
+
+        String password = JTerm.password("Enter your password");
+
+        JTerm.println("Please select a meal:");
+        String result = JTerm.menu("pizza", "bread", "sausage");
+
+        JTerm.println("Hello @|yellow " + firstName + " " + lastName + "|@, you are @|red " + age + "|@ y.o and your password is @|magenta " + password + "|@");
+        JTerm.println("You ordered @|green $result|@");
+    }
+}
+```
 
 ## API
 
