@@ -42,11 +42,19 @@ class JTerm {
     }
 
     static String password(String prompt = '', String defaultValue = null) {
-        renderPrompt(new Input(prompt, '*'))
+        renderPrompt(new Input(prompt, '*', defaultValue))
+    }
+
+    static String password(String prompt = '', Validator validator) {
+        renderPrompt(new Input(prompt, '*', null, validator))
     }
 
     static String input(String prompt = '', String defaultValue = null) {
         renderPrompt(new Input(prompt, null, defaultValue))
+    }
+
+    static String input(String prompt = '', Validator validator) {
+        renderPrompt(new Input(prompt, null, null, validator))
     }
 
     static println(String str = '') {
