@@ -32,17 +32,17 @@ image::example.png[example]
 
 ## API
 
-### String JTerm.input(String prompt = '', String defaultValue = '')
+#### String JTerm.input(String prompt = '', String defaultValue = '')
 
 Ask a question to the user and returns the answer, which can be the default
 value if no input was typed
 
-### String JTerm.passwor(String prompt = '', String defaultValue = '')
+#### String JTerm.passwor(String prompt = '', String defaultValue = '')
 
 Same as above but with a masked input
 
 
-### String JTerm.input(String prompt = '', Validator validator = null)
+#### String JTerm.input(String prompt = '', Validator validator = null)
 
 Asks the question until the input is valid.
 The `Validator` is a simple interface:
@@ -57,18 +57,18 @@ interface Validator {
   String validate(String input)
 }
 ```
-### String JTerm.password(String prompt = '', Validator validator = null)
+#### String JTerm.password(String prompt = '', Validator validator = null)
 
 Same as above but with masked input
 
-### String JTerm.menu(String... items)
+#### String JTerm.menu(String... items)
 
 Displays a menu with the items passed as parameters.
 Users can then use the keyboard arrows to select one entry in the menu
 
-### println(String str = '')
-### println(String str, Color fontColor)
-### println(Ansi ansi)
+#### println(String str = '')
+#### println(String str, Color fontColor)
+#### println(Ansi ansi)
 
 Prints a string. You can use jansi colors:
 
@@ -86,9 +86,9 @@ And also to:
 JTerm.println(Ansi.ansi().fg(YELLOW).render('Hello'))
 ```
 
-### print(String str = '')
-### print(String str, Color fontColor)
-### print(Ansi ansi)
+#### print(String str = '')
+#### print(String str, Color fontColor)
+#### print(Ansi ansi)
 
 Same as above but without carriage return
 
