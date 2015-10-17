@@ -41,12 +41,12 @@ class JTerm {
         renderPrompt(new Menu(items))
     }
 
-    static String password(String prompt = '') {
-        readLine(prompt, '*' as char)
+    static String password(String prompt = '', String defaultValue = null) {
+        renderPrompt(new Input(prompt, '*'))
     }
 
-    static String input(String prompt = '') {
-        renderPrompt(new Input(prompt))
+    static String input(String prompt = '', String defaultValue = null) {
+        renderPrompt(new Input(prompt, null, defaultValue))
     }
 
     static println(String str = '') {

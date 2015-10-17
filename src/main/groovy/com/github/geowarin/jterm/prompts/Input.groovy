@@ -5,21 +5,27 @@ import com.github.geowarin.jterm.JTerm
 import static org.fusesource.jansi.Ansi.Color.GREEN
 
 class Input implements Prompt {
-    private String prompt
-    String result
+    private String question
+    private String result
+    private String defaultValue
+    private String mask
 
-    Input(String prompt) {
-        this.prompt = prompt
+    Input(String question, String mask = null, String defaultValue = null) {
+        this.mask = mask
+        this.defaultValue = defaultValue
+        this.question = question
     }
 
     @Override
     void render() {
         JTerm.print('? ', GREEN)
-        result = JTerm.readLine("$prompt: ")
+        String defaultVal = defaultValue ? "($defaultValue)" : ''
+        String prompt = "$question: $defaultVal"
+        result = JTerm.readLine(prompt, mask as Character)
     }
 
     @Override
     String getResult() {
-        result
+        result ?: defaultValue
     }
 }
