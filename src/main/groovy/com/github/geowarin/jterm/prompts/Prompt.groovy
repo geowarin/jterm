@@ -2,7 +2,7 @@ package com.github.geowarin.jterm.prompts
 
 interface Prompt {
 
-    void render()
+  void render()
 
-    String getResult()
+  String getResult()
 }
