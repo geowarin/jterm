@@ -1,4 +1,4 @@
-package com.github.geowarin.jterm.promps
+package com.github.geowarin.jterm.prompts
 
 import com.github.geowarin.jterm.JTerm
 import com.github.geowarin.jterm.Keys
@@ -40,9 +40,9 @@ class Menu extends BasePrompt {
         }
         items.eachWithIndex { String item, int index ->
             if (selected == index) {
-                JTerm.print("-> $item", RED)
+                JTerm.println("-> $item", RED)
             } else {
-                JTerm.print("   $item")
+                JTerm.println("   $item")
             }
         }
     }

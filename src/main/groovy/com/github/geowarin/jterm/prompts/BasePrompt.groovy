@@ -1,4 +1,4 @@
-package com.github.geowarin.jterm.promps
+package com.github.geowarin.jterm.prompts
 
 abstract class BasePrompt implements Prompt {
 }

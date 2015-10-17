@@ -1,8 +1,9 @@
 package com.github.geowarin.jterm
 
-import com.github.geowarin.jterm.promps.Echo
-import com.github.geowarin.jterm.promps.Menu
-import com.github.geowarin.jterm.promps.Prompt
+import com.github.geowarin.jterm.prompts.Echo
+import com.github.geowarin.jterm.prompts.Input
+import com.github.geowarin.jterm.prompts.Menu
+import com.github.geowarin.jterm.prompts.Prompt
 import jline.console.ConsoleReader
 import org.fusesource.jansi.Ansi
 import org.fusesource.jansi.Ansi.Color
@@ -41,7 +42,24 @@ class JTerm {
     }
 
     static String password(String prompt = '') {
-        jTerm.reader.readLine(prompt, '*' as char)
+        readLine(prompt, '*' as char)
+    }
+
+    static String input(String prompt = '') {
+        renderPrompt(new Input(prompt))
+    }
+
+    static println(String str = '') {
+        println(ansi().render(str))
+    }
+
+    static println(String str, Color fontColor) {
+        println(ansi().fg(fontColor).render(str).reset())
+    }
+
+    static println(Ansi ansi) {
+        jTerm.reader.output.println(ansi)
+        flush()
     }
 
     static print(String str = '') {
@@ -53,8 +71,7 @@ class JTerm {
     }
 
     static print(Ansi ansi) {
-        jTerm.reader.output.println(ansi)
-        flush()
+        jTerm.reader.output.print(ansi)
     }
 
     static flush() {
@@ -69,5 +86,9 @@ class JTerm {
 
     static int readCharacter() {
         jTerm.reader.readCharacter()
+    }
+
+    static String readLine(String prompt = '', Character mask = null) {
+        jTerm.reader.readLine(prompt, mask)
     }
 }
