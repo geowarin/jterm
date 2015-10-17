@@ -38,12 +38,12 @@ class Menu extends BasePrompt {
         reader.clearScreen()
         items.eachWithIndex { String item, int index ->
             if (selected == index) {
-                reader.out << ansi().render("@|red -> $item|@\n")
+                reader.output << ansi().render("@|red -> $item|@\n")
             } else {
-                reader.out << '   ' + item + '\n'
+                reader.output << '   ' + item + '\n'
             }
         }
-        reader.out.flush()
+        reader.output.flush()
     }
 
     String getResult() {

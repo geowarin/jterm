@@ -4,6 +4,9 @@ import com.github.geowarin.jterm.promps.Echo
 import com.github.geowarin.jterm.promps.Menu
 import com.github.geowarin.jterm.promps.Prompt
 import jline.console.ConsoleReader
+import org.fusesource.jansi.Ansi
+
+import static org.fusesource.jansi.Ansi.ansi
 
 class JTerm {
     static JTerm jTerm
@@ -21,6 +24,16 @@ class JTerm {
 
     static String menu(String... items) {
         renderPrompt(new Menu(items))
+    }
+
+    static print(String str) {
+        print(ansi().render(str))
+    }
+
+    static print(Ansi ansi) {
+        init()
+        jTerm.reader.output << ansi
+        jTerm.reader.output.flush()
     }
 
     private static void init() {

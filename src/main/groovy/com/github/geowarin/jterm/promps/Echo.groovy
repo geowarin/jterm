@@ -8,8 +8,8 @@ public class Echo extends BasePrompt {
     public void render(ConsoleReader reader) {
         int c;
         while ((c = reader.readCharacter()) != null) {
-            reader.out << c + '\n'
-            reader.out.flush()
+            reader.output << c + '\n'
+            reader.output.flush()
         }
     }
 
