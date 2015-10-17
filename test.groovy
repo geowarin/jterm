@@ -4,7 +4,10 @@ import static org.fusesource.jansi.Ansi.Color.MAGENTA
 
 //JTerm.echo()
 
-JTerm.print('Please select a meal:', MAGENTA)
+//JTerm.print('Please select a meal:', MAGENTA)
+//def result = JTerm.menu('pizza', 'bread', 'sausage')
+//JTerm.print("You selected @|green $result|@")
 
-def result = JTerm.menu('pizza', 'bread', 'sausage')
-JTerm.print("You selected @|green $result|@")
+JTerm.print('Enter your password:', MAGENTA)
+String password = JTerm.password()
+JTerm.print("You entered @|yellow $password|@")

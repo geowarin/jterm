@@ -40,6 +40,10 @@ class JTerm {
         renderPrompt(new Menu(items))
     }
 
+    static String password(String prompt = '') {
+        jTerm.reader.readLine(prompt, '*' as char)
+    }
+
     static print(String str = '') {
         print(ansi().render(str))
     }
