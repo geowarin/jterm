@@ -37,7 +37,7 @@ image::example.png[example]
 Ask a question to the user and returns the answer, which can be the default
 value if no input was typed
 
-#### String JTerm.passwor(String prompt = '', String defaultValue = '')
+#### String JTerm.password(String prompt = '', String defaultValue = '')
 
 Same as above but with a masked input
 
