@@ -58,7 +58,7 @@ public class Main {
         String result = JTerm.menu("pizza", "bread", "sausage");
 
         JTerm.println("Hello @|yellow " + firstName + " " + lastName + "|@, you are @|red " + age + "|@ y.o and your password is @|magenta " + password + "|@");
-        JTerm.println("You ordered @|green $result|@");
+        JTerm.println("You ordered @|green " + result + "|@");
     }
 }
 ```
