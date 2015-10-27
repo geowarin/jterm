@@ -113,7 +113,7 @@ Prints a string. You can use jansi colors:
 ```java
 JTerm.println("@|yellow Hello|@")
 ```
-Is equivalent to:
+Which is equivalent to:
 
 ```java
 JTerm.println("Hello", Ansi.Color.YELLOW)
