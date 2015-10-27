@@ -41,7 +41,7 @@ class Menu<T> implements Prompt<T> {
     if (clear) {
       JTerm.clearLines(iterator.map.size())
     }
-    iterator.map.eachWithIndex { T key, String item, int index ->
+    iterator.map.each { T key, String item ->
       if (iterator.currentKey() == key) {
         JTerm.println("-> $item", RED)
       } else {

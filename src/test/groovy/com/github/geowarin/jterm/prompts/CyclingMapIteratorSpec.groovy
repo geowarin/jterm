@@ -6,7 +6,7 @@ class CyclingMapIteratorSpec extends Specification {
 
   def "should cycle when next is called on last element"() {
     given:
-    def map = [1:1, 2:2]
+    def map = [1: '1', 2: '2']
     def iterator = new CyclingMapIterator<>(map)
 
     when:
@@ -24,7 +24,7 @@ class CyclingMapIteratorSpec extends Specification {
 
   def "should cycle when previous is called on first element"() {
     given:
-    def map = [1:1, 2:2]
+    def map = [1: '1', 2: '2']
     def iterator = new CyclingMapIterator<>(map)
 
     when:
