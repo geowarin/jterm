@@ -100,9 +100,9 @@ Same as above but with masked input
 Displays a menu with the items passed as parameters.
 Users can then use the keyboard arrows to select one entry in the menu.
 
-You use a list of anything and the items will be displayed to the user using **toString()**.
-Or you can use a map using anything as a key, and Strings as displayable values.
-The menu will then return the key associated with the selected value.
+If you use a list of any type, the items will be displayed to the user using **toString()**.
+You can also use a map any type as a key, and Strings as displayable values.
+The menu will then return the key associated with the selected item.
 
 #### println(String str = '')
 #### println(String str, Color fontColor)
