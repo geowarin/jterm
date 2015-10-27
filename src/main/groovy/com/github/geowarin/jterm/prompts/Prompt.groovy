@@ -1,8 +1,8 @@
 package com.github.geowarin.jterm.prompts
 
-interface Prompt {
+interface Prompt<T> {
 
   void render()
 
-  String getResult()
+  T getResult()
 }

@@ -17,7 +17,6 @@ class JTerm {
 
   static JTerm jTerm = new JTerm()
 
-  private Prompt currentPrompt
   private ConsoleReader reader
 
   JTerm() {
@@ -37,7 +36,11 @@ class JTerm {
     renderPrompt(new Echo())
   }
 
-  static String menu(String... items) {
+  static <T> T menu(T... items) {
+    renderPrompt(new Menu(items))
+  }
+
+   static <T> T menu(Map<T, String> items) {
     renderPrompt(new Menu(items))
   }
 
@@ -94,9 +97,8 @@ class JTerm {
     jTerm.reader.readLine(prompt, mask)
   }
 
-  private static String renderPrompt(Prompt prompt) {
-    jTerm.currentPrompt = prompt
-    jTerm.currentPrompt.render()
-    jTerm.currentPrompt.result
+  private static <T> T renderPrompt(Prompt<T> prompt) {
+    prompt.render()
+    prompt.result
   }
 }

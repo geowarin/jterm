@@ -5,12 +5,16 @@ import com.github.geowarin.jterm.Keys
 
 import static org.fusesource.jansi.Ansi.Color.RED
 
-class Menu implements Prompt {
-  private String[] items
-  int selected = 0
+class Menu<T> implements Prompt<T> {
+  CyclingMapIterator<T> iterator
 
-  Menu(String... items) {
-    this.items = items
+  Menu(T... items) {
+    def map = items.collectEntries { [(it): it.toString()] }
+    iterator = new CyclingMapIterator<>(map)
+  }
+
+  Menu(Map<T, String> itemsAndValues) {
+    iterator = new CyclingMapIterator<>(itemsAndValues)
   }
 
   void render() {
@@ -19,26 +23,26 @@ class Menu implements Prompt {
     int c;
     while ((c = JTerm.readCharacter()) != null) {
       if (c == Keys.DOWN) {
-        decrementSelected()
+        iterator.previous()
+        display(true)
       }
       if (c == Keys.UP) {
-        incrementSelected()
+        iterator.next()
+        display(true)
       }
 
       if (c == Keys.ENTER) {
         break;
       }
-
-      display(true)
     }
   }
 
   private void display(clear = false) {
     if (clear) {
-      JTerm.clearLines(items.size())
+      JTerm.clearLines(iterator.map.size())
     }
-    items.eachWithIndex { String item, int index ->
-      if (selected == index) {
+    iterator.map.eachWithIndex { T key, String item, int index ->
+      if (iterator.currentKey() == key) {
         JTerm.println("-> $item", RED)
       } else {
         JTerm.println("   $item")
@@ -46,17 +50,7 @@ class Menu implements Prompt {
     }
   }
 
-  String getResult() {
-    items[selected]
-  }
-
-  private void incrementSelected() {
-    selected++
-    selected = selected >= items.size() ? 0 : selected
-  }
-
-  private void decrementSelected() {
-    selected--
-    selected = selected < 0 ? items.size() - 1 : selected
+  T getResult() {
+    iterator.currentKey()
   }
 }

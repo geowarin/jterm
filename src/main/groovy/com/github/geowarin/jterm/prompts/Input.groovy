@@ -6,7 +6,7 @@ import com.github.geowarin.jterm.Validator
 import static org.fusesource.jansi.Ansi.Color.*
 import static org.fusesource.jansi.Ansi.ansi
 
-class Input implements Prompt {
+class Input implements Prompt<String> {
   private String question
   private String result
   private String defaultValue
