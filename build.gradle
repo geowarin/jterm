@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.github.geowarin'
-version '0.2'
+version '0.3'
 
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
