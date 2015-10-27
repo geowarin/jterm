@@ -9,7 +9,7 @@ A friendly java/groovy library to collect user inputs in commandline application
 The following groovy script:
 
 ```groovy
-@Grab(group='com.github.geowarin', module='jterm', version='0.2')
+@Grab(group='com.github.geowarin', module='jterm', version='0.3')
 import com.github.geowarin.jterm.JTerm
 import com.github.geowarin.jterm.Validator
 
